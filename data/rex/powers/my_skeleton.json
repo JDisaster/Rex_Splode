@@ -1,0 +1,133 @@
+{
+    "type": "origins:multiple",
+    "name": "My Skeleton",
+    "description": "You can charge your own skeleton, causing you to explode with enough force to kill even a Viltrumite. Shockingly, this will kill you.",
+    
+    "resource": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 80,
+        "hud_render": {
+            "should_render": true,
+            "condition": {
+                "type": "origins:resource",
+                "resource": "*:*_resource",
+                "comparison": ">",
+                "compare_to": 0
+            },
+            "sprite_location": "origins:textures/gui/resource_bar.png",
+            "bar_index": 0
+        },
+        "max_action": {
+            "type": "origins:and",
+            "actions": [{
+                "type": "origins:explode",
+                "power": 7,
+                "destruction_type": "destroy",
+                "damage_self": false,
+                "create_fire": false
+            },
+            {
+                "type": "origins:execute_command",
+                "command": "kill",
+                "permission_level": 4
+            }]
+        }
+    },
+
+    "charge_explosion": {
+        "type": "origins:action_on_key_press",
+        "key": {
+            "id": "key.origins.secondary_active",
+            "continuous": true
+        },
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "change": 1
+        }
+    },
+
+    "single_press_effects": {
+        "type": "origins:action_on_key_press",
+        "key": {
+            "id": "key.origins.secondary_active"
+        },
+        "cooldown": 1,
+        "entity_action": {
+            "type": "origins:and",
+            "actions": [{
+                "type": "origins:play_sound",
+                "sound": "item.flintandsteel.use",
+                "volume": 2,
+                "pitch": 0.1
+            },
+            {
+                "type": "origins:delay",
+                "ticks": 10,
+                "action": {
+                    "type": "origins:play_sound",
+                    "sound": "entity.creeper.primed",
+                    "volume": 2,
+                    "pitch": 1
+                }
+            },
+            {
+                "type": "origins:trigger_cooldown",
+                "power": "*:*_cooldown"
+            }]
+        }
+    },
+
+    "glow": {
+        "type": "origins:self_glow",
+        "use_teams": false,
+        "condition": {
+            "type": "origins:resource",
+            "resource": "*:*_resource",
+            "comparison": ">",
+            "compare_to": 0
+        }
+    },
+
+    "cooldown": {
+        "type": "origins:cooldown",
+        "cooldown": 80
+    },
+
+    "resource_decay": {
+        "type": "origins:action_over_time",
+        "interval": 1,
+        "entity_action": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "change": -2
+        },
+        "condition": {
+            "type": "origins:and",
+            "conditions": [{
+                "type": "origins:resource",
+                "resource": "*:*_resource",
+                "comparison": ">",
+                "compare_to": 0  
+            },
+            {
+                "type": "origins:resource",
+                "resource": "*:*_cooldown",
+                "comparison": "==",
+                "compare_to": 0  
+            }]
+        }
+    },
+
+    "reset_on_respawn": {
+        "type": "origins:action_on_callback",
+        "entity_action_respawned": {
+            "type": "origins:change_resource",
+            "resource": "*:*_resource",
+            "operation": "set",
+            "change": 0
+        }
+    }
+}

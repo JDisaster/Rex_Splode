@@ -1,0 +1,5 @@
+{
+    "type": "origins:restrict_armor",
+    "name": "Very Light Wear",
+    "description": "To maintain agility at all times, you cannot wear anything heavier than leather armor."
+}

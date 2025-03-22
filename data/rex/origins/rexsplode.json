@@ -1,0 +1,15 @@
+{
+	"powers": [
+		"rex:superhuman_physiology",
+		"rex:kinetic_charge",
+		"rex:my_skeleton",
+		"rex:leather_only"
+	],
+	"icon": {
+		"id":"minecraft:tnt"
+	},
+	"order": 998,
+	"impact": 2,
+	"name": "Rex Splode",
+	"description": "Rex Splode gained his powers from government experimentation, the results of which allow him to charge inorganic matter and turn it into an explosive when it is exposed to kinetic energy."
+}

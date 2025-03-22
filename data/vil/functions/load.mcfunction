@@ -1,2 +1,0 @@
-scoreboard objectives add vil_damageDealt minecraft.custom:minecraft.damage_dealt
-scoreboard objectives add vil_damageTaken minecraft.custom:minecraft.damage_taken
