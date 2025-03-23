@@ -1,5 +1,43 @@
 {
     "type": "origins:restrict_armor",
     "name": "Very Light Wear",
-    "description": "To maintain agility at all times, you cannot wear anything heavier than leather armor."
+    "description": "To maintain agility at all times, you cannot wear anything heavier than leather armor.",
+
+    "head": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "item": "minecraft:leather_helmet"
+        },
+        "inverted": true
+    },
+    "chest": {
+        "type": "origins:or",
+        "conditions": [{
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:leather_chestplate"
+            }
+        },
+        {
+            "type": "origins:ingredient",
+            "ingredient": {
+                "item": "minecraft:elytra"
+            }
+        }],
+        "inverted": true
+    },
+    "legs": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "item": "minecraft:leather_leggings"
+        },
+        "inverted": true
+    },
+    "feet": {
+        "type": "origins:ingredient",
+        "ingredient": {
+            "item": "minecraft:leather_boots"
+        },
+        "inverted": true
+    }
 }

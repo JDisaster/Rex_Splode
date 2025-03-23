@@ -1,5 +1,27 @@
 {
     "type": "origins:multiple",
     "name": "Superhuman Physiology",
-    "description": "Your strength, durability, and agility are all moderately amplified as a side effect of government experimentation."
+    "description": "Your strength and durability are both moderately amplified as a side effect of government experimentation.",
+
+    "strength": {
+        "type": "origins:modify_damage_dealt",
+        "damage_condition": {
+            "type": "origins:projectile",
+            "inverted": true
+        },
+        "modifier": {
+            "id": "rex:strength",
+            "operation": "add_base_early",
+            "amount": 2
+        }
+    },
+
+    "damage_resistance": {
+        "type": "origins:modify_damage_taken",
+        "modifier": {
+            "id": "rex:damage_resistance",
+            "operation": "multiply_base_additive",
+            "amount": -0.2
+        }
+    }
 }
