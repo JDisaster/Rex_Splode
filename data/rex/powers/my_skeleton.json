@@ -19,6 +19,12 @@
         }
     },
 
+    "primed": {
+        "type": "origins:resource",
+        "min": 0,
+        "max": 1
+    },
+
     "charge_explosion": {
         "type": "origins:action_on_key_press",
         "key": {
@@ -44,6 +50,11 @@
                 }
             },
             {
+                "type": "origins:change_resource",
+                "resource": "*:*_primed",
+                "change": 1
+            },
+            {
                 "type": "origins:trigger_cooldown",
                 "power": "*:*_cooldown"
             }]
@@ -63,16 +74,30 @@
                 "create_fire": false
             },
             {
+                "type": "origins:change_resource",
+                "resource": "*:*_primed",
+                "change": -1
+            },
+            {
                 "type": "origins:execute_command",
                 "command": "kill",
                 "permission_level": 4
             }]
         },
         "condition": {
-            "type": "origins:resource",
-            "resource": "*:*_cooldown",
-            "comparison": "==",
-            "compare_to": 1
+            "type": "origins:and",
+            "conditions": [{
+                "type": "origins:resource",
+                "resource": "*:*_cooldown",
+                "comparison": "==",
+                "compare_to": 0
+            },
+            {
+                "type": "origins:resource",
+                "resource": "*:*_primed",
+                "comparison": "==",
+                "compare_to": 1
+            }]
         }
     },
 
